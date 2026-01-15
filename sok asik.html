@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Yourself</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #ffb6c1;
+            --light-blue: #ffe4e9;
+            --dark-green: #ff8da1;
+            --black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #2d2d2d;
+            --light-gray: #444444;
+            --text-gray: #cccccc;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--black);
+            color: var(--text-gray);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .page {
+            display: none;
+            background-color: var(--dark-gray);
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin: 30px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--medium-gray);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .active-page {
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-green);
+            text-align: center;
+            text-shadow: 0 0 15px rgba(255, 182, 193, 0.4);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--light-pink);
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-pink);
+        }
+
+        .sambutan {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--light-pink);
+            padding: 15px;
+            border-radius: 15px;
+            background-color: rgba(255, 182, 193, 0.1);
+            border-left: 5px solid var(--primary-pink);
+        }
+
+        .highlight {
+            color: var(--primary-pink);
+            font-weight: 700;
+        }
+
+        .content {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: rgba(45, 45, 45, 0.7);
+            border-radius: 15px;
+            line-height: 1.8;
+        }
+
+        .pertanyaan {
+            font-size: 1.3rem;
+            margin: 30px 0;
+            padding: 25px;
+            background-color: rgba(255, 182, 193, 0.1);
+            border-radius: 15px;
+            border-left: 5px solid var(--primary-pink);
+        }
+
+        .btn {
+            background: linear-gradient(to right, var(--primary-pink), var(--dark-pink));
+            color: var(--black);
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 40px auto 20px;
+            box-shadow: 0 5px 15px rgba(255, 182, 193, 0.3);
+            text-align: center;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 182, 193, 0.5);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-small {
+            padding: 12px 25px;
+            font-size: 1rem;
+            margin: 20px auto;
+            width: auto;
+        }
+
+        .middle finger-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .middle finger {
+            position: absolute;
+            color: var(--primary-pink);
+            opacity: 0;
+            font-size: 24px;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .ucapan-final {
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 30px;
+            margin: 40px 0;
+            background-color: rgba(255, 182, 193, 0.15);
+            border-radius: 20px;
+            border: 2px solid var(--primary-pink);
+            line-height: 1.8;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            color: var(--light-pink);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .page-indicator {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .emoji {
+            font-size: 2rem;
+            margin: 0 10px;
+        }
+
+        .love-letter {
+            background-color: rgba(45, 45, 45, 0.8);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid var(--primary-pink);
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .page {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
+            .sambutan {
+                font-size: 1.5rem;
+            }
+            
+            .content {
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .page {
+                padding: 25px 15px;
+            }
+            
+            .sambutan {
+                font-size: 1.3rem;
+            }
+            
+            .content {
+                font-size: 1rem;
+                padding: 15px;
+            }
+            
+            .pertanyaan {
+                font-size: 1.1rem;
+                padding: 20px;
+            }
+            
+            .ucapan-final {
+                font-size: 1.2rem;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="middle finger-animation" id="middle finger-animation"></div>
+    
+    <div class="container">
+        <!-- Page 1: Sambutan -->
+        <div class="page active-page" id="page1">
+            <h1><i class="fas fa-middle finger"></i> Buat Nesya 🙏🏻<i class="fas fa-middle finger"></i></h1>
+            <div class="sambutan">Halo <span class="highlight" id="pacar-name">Kawan</span> </div>
+            
+            <div class="content">
+                <p>Oy Kawan Fara </p>
+                
+                <p>Sorry Atas Kesalahan Aku Bersama Jojo Kawan Ku wkwkwk Maaf Ini Aku Seada Nya aja Soalnya Klo Serius Gak Asik Jdi Jangn Di Masukkin Ke dalam Hati Yo lek Jadi Jangan Baperan Lagi Kaka Fara Nanti Marah ke Aku, Kena Pula Aku Imbas Nya Dan Kena Marah 😑 Serah Lu Mau Maafin Kgk Nya yak Cewek Simpenan Om Om Kuliahan Yang Katanya Ganteng.</p>
+          </h1> 
+          <p>Maafin Entar Takut nya Ayang Gw Marah Ke gw😑</p>
+              <div class="footer">
+            <p>Di Buat Willi <i class="fas fa-heart" style="color: var(--primary-pink);"></i><datagrid>
+                
+            </datagrid>Dari Wil Ke Far Dari Far ke Ne</p>
+            <p>© 2026 - SURAT AGAR TERHINDAR DARI AMUKAN SANG TUAN RATU 🫡 (F❤️)</p>
+        </div>
+    </div>
+           </script>
+</body>
+</html>
